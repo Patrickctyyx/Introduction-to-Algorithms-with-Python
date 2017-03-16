@@ -1,6 +1,6 @@
 """最大优先队列"""
 
-from heap_sort import HeapSort
+from .heap_sort import HeapSort
 
 
 class MaxPriorityQueue:

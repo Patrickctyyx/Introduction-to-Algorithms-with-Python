@@ -6,7 +6,7 @@
 （注意，使用链表的话就可以直接根据.next来判断下一个元素了，下面的方法没有用链表而是一个个判断，时间复杂度提高到了O(nk)）
 3.重复1.2.直到所有元素都到位
 """
-from min_heap import MinHeap
+from .min_heap import MinHeap
 
 
 def merge_list(L):
