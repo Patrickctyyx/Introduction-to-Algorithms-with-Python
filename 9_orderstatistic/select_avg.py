@@ -29,6 +29,10 @@ def select(L, p, r, i):
     if k == i:
         return L[q]
     elif k < i:
-        return select(L, q + 1, r, i)
-    return select(L, p, q - 1, i - k)
+        return select(L, q + 1, r, i - k)
+    return select(L, p, q - 1, i)
+
+if __name__ == '__main__':
+    L = [9, 8, 7, 6, 5, 4, 3, 2, 1]
+    print(select(L, 0, 8, 5))
 
