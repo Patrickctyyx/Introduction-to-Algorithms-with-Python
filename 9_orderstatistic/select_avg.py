@@ -29,7 +29,9 @@ def select(L, p, r, i):
     if k == i:
         return L[q]
     elif k < i:
+        # 在新的数组里面原来的第i小的现在是第i - k小了，因为开头的元素改变了
         return select(L, q + 1, r, i - k)
+    # 而在这里相对位置不变，因为开头的元素没有变化
     return select(L, p, q - 1, i)
 
 if __name__ == '__main__':
