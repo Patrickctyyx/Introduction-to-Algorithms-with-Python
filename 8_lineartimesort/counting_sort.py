@@ -8,15 +8,15 @@
 
 
 def counting_sort(A, k):
-    B = [None for b in range(len(A))]
-    C = [0 for i in range(k + 1)]
+    B = [None for b in range(len(A))]  # 存放结果
+    C = [0 for i in range(k + 1)]  # 存放 A 中元素的位置
     for elem in A:
         C[elem] += 1
     for i in range(k):
         C[i + 1] += C[i]
 
     for i in range(len(A)):
-        temp = A[-(i + 1)]
+        temp = A[-(i + 1)]  # 从后往前看，保证相同元素放在不同位置
         B[C[temp] - 1] = temp
         C[temp] -= 1
     return B

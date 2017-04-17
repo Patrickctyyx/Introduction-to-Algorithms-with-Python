@@ -14,7 +14,7 @@ class Stack:
     def push(self, elem):
         if self.top + 1 >= self.size:
             print('overflow!')
-            return
+            return None
         if not self.stack_empty():
             self.top += 1
         self.S[self.top] = elem
@@ -22,7 +22,7 @@ class Stack:
     def pop(self):
         if self.stack_empty():
             print('underflow!')
-            return
+            return None
         elem = self.S[self.top]
         self.S[self.top] = None
         self.top -= 1

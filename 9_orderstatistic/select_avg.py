@@ -17,7 +17,7 @@ def partition(L, p, r):
             i += 1
             L[j], L[i] = L[i], L[j]
     L[i + 1], L[r] = L[r], L[i + 1]
-    return i + 1
+    return i + 1  # 返回 pivot
 
 
 # 寻找第i小的元素

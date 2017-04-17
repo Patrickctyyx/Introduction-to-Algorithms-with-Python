@@ -9,14 +9,14 @@ class Queue:
     def enqueue(self, elem):
         if (self.tail + 1) % self.size == self.head:
             print('overflow!')
-            return
+            return None
         self.Q[self.tail] = elem
         self.tail = (self.tail + 1) % self.size
 
     def dequeue(self):
         if self.tail == self.head:
             print('underflow')
-            return
+            return None
         elem = self.Q[self.head]
         self.Q[self.head] = None
         self.head = (self.head + 1) % self.size
