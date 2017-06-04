@@ -1,5 +1,6 @@
 """
 node.left.key > node > node.right.key
+
 """
 
 
@@ -15,17 +16,19 @@ class Node:
 class BinarySearchTree:
 
     def __init__(self, T):
-        T.insert(0, len(T))
-        for i in range(1, T[0] + 1):
-            if i > 1 and T[i]:
-                T[i].p = T[int(i / 2)]
-            if 2 * i <= T[0] and T[i]:
-                T[i].left = T[2 * i]
-            if 2 * i + 1 <= T[0] and T[i]:
-                T[i].right = T[2 * i + 1]
+        # for i in range(1, T[0] + 1):
+        #     if i > 1 and T[i]:
+        #         T[i].p = T[int(i / 2)]
+        #     if 2 * i <= T[0] and T[i]:
+        #         T[i].left = T[2 * i]
+        #     if 2 * i + 1 <= T[0] and T[i]:
+        #         T[i].right = T[2 * i + 1]
         # root is T[1]
         # T[0] is the num of elements
-        self.tree = T
+        # 使用 tree_insert 来构建二叉搜索树
+        self.tree = [0]
+        for i in T:
+            self.tree_insert(i)
 
     def inorder_tree_walk(self, root):
         if root:
@@ -33,6 +36,7 @@ class BinarySearchTree:
             print(root.key)
             self.inorder_tree_walk(root.right)
 
+    # 递归查找
     def tree_search(self, root, k):
         if root is None:
             print('Not found')
@@ -45,6 +49,7 @@ class BinarySearchTree:
         else:
             return self.tree_search(root.right, k)
 
+    # 迭代查找
     def interactive_tree_search(self, root, k):
         while root and root.key != k:
             if k > root.key:
@@ -100,7 +105,10 @@ class BinarySearchTree:
     def tree_insert(self, node):
         self.tree[0] += 1
         y = None
-        x = self.tree[1]
+        try:
+            x = self.tree[1]
+        except:
+            x = None
         while x:  # 总是在叶子节点插入
             y = x
             if node.key > x.key:
@@ -152,11 +160,15 @@ class BinarySearchTree:
 
 if __name__ == '__main__':
     T = []
-    for i in [6, 9, 5, 10, 7, None, 2, None, None, 8, None, None, None, 3, 1, None, None, None, None, None, None, None, None, None, None, None, None, 4]:
-        if i:
-            T.append(Node(i))
-        else:
-            T.append(None)
+    # for i in [6, 9, 5, 10, 7, None, 2, None, None, 8, None, None, None,
+    #           3, 1, None, None, None, None, None, None, None, None,
+    #           None, None, None, None, 4]:
+    #     if i:
+    #         T.append(Node(i))
+    #     else:
+    #         T.append(None)
+    for i in [6, 9, 5, 10, 7, 2, 8, 3, 1, 4]:
+        T.append(Node(i))
     bst = BinarySearchTree(T)
     bst.inorder_tree_walk(bst.tree[1])
     rst = bst.tree_search(bst.tree[1], 5)
